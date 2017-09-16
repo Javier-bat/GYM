@@ -88,6 +88,11 @@ return retValue;
                 jButtonIniciarSesionMouseClicked(evt);
             }
         });
+        jButtonIniciarSesion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonIniciarSesionActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButtonIniciarSesion, new org.netbeans.lib.awtextra.AbsoluteConstraints(240, 440, 240, 40));
 
         nuevoUsuario.setBackground(new java.awt.Color(0, 0, 0));
@@ -143,12 +148,20 @@ return retValue;
 
     private void nuevoUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_nuevoUsuarioActionPerformed
         // TODO add your handling code here:
+                nuevaCuenta in=new nuevaCuenta();
+        in.setVisible(true);
+        
+        
     }//GEN-LAST:event_nuevoUsuarioActionPerformed
 
     private void nuevoUsuarioMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_nuevoUsuarioMouseClicked
         // TODO add your handling code here:
        
     }//GEN-LAST:event_nuevoUsuarioMouseClicked
+
+    private void jButtonIniciarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonIniciarSesionActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonIniciarSesionActionPerformed
 
     /**
      * @param args the command line arguments
