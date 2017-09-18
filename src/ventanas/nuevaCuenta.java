@@ -8,6 +8,9 @@ package ventanas;
 import java.awt.Image;
 import java.awt.Toolkit;
 import javax.swing.JOptionPane;
+import SQL.Conexion;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 
 /**
  *
@@ -18,6 +21,26 @@ public class nuevaCuenta extends javax.swing.JFrame {
     /**
      * Creates new form nuevaCuenta
      */
+Conexion conecion=new Conexion();
+Connection cin = conecion.Entrar();//llamamos al metodo connect
+
+    PreparedStatement ps;
+
+void Registrar(){//creo metodo vacio
+String insertar="insert into usuario (Usuario,Contraseña)values(?,?)";
+    try {
+        ps = cin.prepareCall(insertar);
+        ps.setString(1, txtUsuario.getText());
+        ps.setString(2, txtContra.getText());
+        int registro=ps.executeUpdate();
+        if(registro>0){
+        JOptionPane.showMessageDialog(null, "USUARIO CREADO...");
+        }
+        else{JOptionPane.showMessageDialog(null, "Hubo un error, intenta de nuevo");}
+    } catch (Exception e) {
+    }
+}
+
     public nuevaCuenta() {
         initComponents();
         this.setLocationRelativeTo(null);
@@ -69,6 +92,11 @@ return retValue;
         });
 
         botonAceptar.setText("Aceptar");
+        botonAceptar.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                botonAceptarMouseClicked(evt);
+            }
+        });
         botonAceptar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 botonAceptarActionPerformed(evt);
@@ -87,51 +115,52 @@ return retValue;
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(82, 82, 82)
-                        .addComponent(jLabel4))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                                .addComponent(jLabel3)
-                                .addComponent(jLabel2, javax.swing.GroupLayout.Alignment.TRAILING)
-                                .addComponent(jLabel1, javax.swing.GroupLayout.Alignment.TRAILING))
-                            .addComponent(botonAceptar, javax.swing.GroupLayout.Alignment.TRAILING))
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(botonCancelar)
-                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                                .addComponent(txtRepetirContra)
-                                .addComponent(txtContra)
-                                .addComponent(txtUsuario, javax.swing.GroupLayout.DEFAULT_SIZE, 136, Short.MAX_VALUE)))))
-                .addContainerGap(31, Short.MAX_VALUE))
+                .addGap(92, 92, 92)
+                .addComponent(jLabel4))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(136, 136, 136)
+                .addComponent(jLabel1)
+                .addGap(6, 6, 6)
+                .addComponent(txtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(92, 92, 92)
+                .addComponent(jLabel2)
+                .addGap(6, 6, 6)
+                .addComponent(txtContra, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(10, 10, 10)
+                .addComponent(jLabel3)
+                .addGap(6, 6, 6)
+                .addComponent(txtRepetirContra, javax.swing.GroupLayout.PREFERRED_SIZE, 136, javax.swing.GroupLayout.PREFERRED_SIZE))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(156, 156, 156)
+                .addComponent(botonAceptar)
+                .addGap(6, 6, 6)
+                .addComponent(botonCancelar))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+            .addGroup(layout.createSequentialGroup()
                 .addGap(27, 27, 27)
                 .addComponent(jLabel4)
                 .addGap(58, 58, 58)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel1)
-                    .addComponent(txtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(3, 3, 3)
+                        .addComponent(txtUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(txtContra, javax.swing.GroupLayout.DEFAULT_SIZE, 31, Short.MAX_VALUE)
-                        .addGap(1, 1, 1))
-                    .addComponent(jLabel2))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                    .addComponent(jLabel2)
+                    .addComponent(txtContra, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(1, 1, 1)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(jLabel3)
-                    .addComponent(txtRepetirContra, javax.swing.GroupLayout.DEFAULT_SIZE, 29, Short.MAX_VALUE))
+                    .addComponent(txtRepetirContra, javax.swing.GroupLayout.PREFERRED_SIZE, 31, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(48, 48, 48)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(botonAceptar)
-                    .addComponent(botonCancelar))
-                .addContainerGap())
+                    .addComponent(botonCancelar)))
         );
 
         pack();
@@ -143,6 +172,12 @@ return retValue;
 
     private void botonAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAceptarActionPerformed
         // TODO add your handling code here:
+     if(txtRepetirContra.getText().equals(txtContra.getText())==false){
+     JOptionPane.showMessageDialog(null, "No coinciden las contraseñas"); 
+        
+     }else{Registrar();
+            dispose();}
+        
     }//GEN-LAST:event_botonAceptarActionPerformed
 
     private void botonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCancelarActionPerformed
@@ -151,6 +186,11 @@ return retValue;
         salir=JOptionPane.showConfirmDialog(null,"¿Esta Seguro?","confirme",JOptionPane.YES_NO_OPTION);
         if(salir==0){dispose();} //dispose cierra la ventana
     }//GEN-LAST:event_botonCancelarActionPerformed
+
+    private void botonAceptarMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_botonAceptarMouseClicked
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_botonAceptarMouseClicked
 
     /**
      * @param args the command line arguments

@@ -12,6 +12,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -40,6 +41,10 @@ public class consultaTabla_cliente{
             Logger.getLogger(consultaTabla_cliente.class.getName()).log(Level.SEVERE, null, ex);
         }
     }
+    
+    
+
+ 
     public static void main(String[] args){
     consultaTabla_cliente objcon = new consultaTabla_cliente();
     objcon.consulta();

@@ -33,7 +33,11 @@ public class nuevoUsuario extends javax.swing.JFrame {
                 {
                     e.consume();
                 }}});
+    txtCual.setVisible(false);
+    jLabelPatologia.setVisible(false);
+      
     }
+    
 
     /**
      * This method is called from within the constructor to initialize the form.
@@ -54,8 +58,8 @@ public class nuevoUsuario extends javax.swing.JFrame {
         jTextFieldApellido = new javax.swing.JTextField();
         jTextFieldEdad = new javax.swing.JTextField();
         jTextFieldObjetivos = new javax.swing.JTextField();
-        jCheckBoxSi = new javax.swing.JCheckBox();
-        jCheckBoxNo = new javax.swing.JCheckBox();
+        CheckNo = new javax.swing.JCheckBox();
+        CheckSi = new javax.swing.JCheckBox();
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jLabel7 = new javax.swing.JLabel();
@@ -149,26 +153,40 @@ public class nuevoUsuario extends javax.swing.JFrame {
         jTextFieldObjetivos.setForeground(new java.awt.Color(204, 204, 204));
         getContentPane().add(jTextFieldObjetivos, new org.netbeans.lib.awtextra.AbsoluteConstraints(70, 270, 270, 30));
 
-        jCheckBoxSi.setForeground(new java.awt.Color(255, 255, 255));
-        jCheckBoxSi.setSelected(true);
-        jCheckBoxSi.setText("No");
-        jCheckBoxSi.setContentAreaFilled(false);
-        jCheckBoxSi.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBoxSiActionPerformed(evt);
+        CheckNo.setForeground(new java.awt.Color(255, 255, 255));
+        CheckNo.setText("No");
+        CheckNo.setContentAreaFilled(false);
+        CheckNo.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                CheckNoMouseClicked(evt);
             }
         });
-        getContentPane().add(jCheckBoxSi, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 360, -1, -1));
+        CheckNo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CheckNoActionPerformed(evt);
+            }
+        });
+        getContentPane().add(CheckNo, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 360, -1, -1));
 
-        jCheckBoxNo.setForeground(new java.awt.Color(255, 255, 255));
-        jCheckBoxNo.setText("Si");
-        jCheckBoxNo.setContentAreaFilled(false);
-        jCheckBoxNo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jCheckBoxNoActionPerformed(evt);
+        CheckSi.setForeground(new java.awt.Color(255, 255, 255));
+        CheckSi.setText("Si");
+        CheckSi.setContentAreaFilled(false);
+        CheckSi.addChangeListener(new javax.swing.event.ChangeListener() {
+            public void stateChanged(javax.swing.event.ChangeEvent evt) {
+                CheckSiStateChanged(evt);
             }
         });
-        getContentPane().add(jCheckBoxNo, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 360, -1, -1));
+        CheckSi.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                CheckSiMouseClicked(evt);
+            }
+        });
+        CheckSi.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                CheckSiActionPerformed(evt);
+            }
+        });
+        getContentPane().add(CheckSi, new org.netbeans.lib.awtextra.AbsoluteConstraints(210, 360, -1, -1));
 
         jLabel5.setFont(new java.awt.Font("Calisto MT", 0, 24)); // NOI18N
         jLabel5.setForeground(new java.awt.Color(255, 255, 255));
@@ -213,6 +231,11 @@ public class nuevoUsuario extends javax.swing.JFrame {
         txtCual.setBackground(new java.awt.Color(102, 102, 102));
         txtCual.setFont(new java.awt.Font("Calisto MT", 0, 24)); // NOI18N
         txtCual.setForeground(new java.awt.Color(204, 204, 204));
+        txtCual.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtCualActionPerformed(evt);
+            }
+        });
         getContentPane().add(txtCual, new org.netbeans.lib.awtextra.AbsoluteConstraints(160, 400, 180, 30));
 
         jLabelPatologia.setFont(new java.awt.Font("Calisto MT", 0, 24)); // NOI18N
@@ -241,9 +264,9 @@ public class nuevoUsuario extends javax.swing.JFrame {
         // TODO add your handling code here:
     }//GEN-LAST:event_jTextFieldApellidoActionPerformed
 
-    private void jCheckBoxSiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxSiActionPerformed
+    private void CheckNoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CheckNoActionPerformed
         // TODO add your handling code here:
-    }//GEN-LAST:event_jCheckBoxSiActionPerformed
+    }//GEN-LAST:event_CheckNoActionPerformed
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
@@ -264,10 +287,39 @@ public class nuevoUsuario extends javax.swing.JFrame {
                 
     }//GEN-LAST:event_jTextFieldEdadKeyTyped
 
-    private void jCheckBoxNoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxNoActionPerformed
+    private void CheckSiActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_CheckSiActionPerformed
         // TODO add your handling code here:
         
-    }//GEN-LAST:event_jCheckBoxNoActionPerformed
+        
+    }//GEN-LAST:event_CheckSiActionPerformed
+
+    private void txtCualActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtCualActionPerformed
+        // TODO add your handling code here:
+      
+        
+    }//GEN-LAST:event_txtCualActionPerformed
+
+    private void CheckSiStateChanged(javax.swing.event.ChangeEvent evt) {//GEN-FIRST:event_CheckSiStateChanged
+        // TODO add your handling code here:
+        
+    }//GEN-LAST:event_CheckSiStateChanged
+
+    private void CheckNoMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CheckNoMouseClicked
+        // TODO add your handling code here:
+        if(CheckNo.isSelected()){txtCual.setVisible(false);
+                                   jLabelPatologia.setVisible(false);}
+        CheckSi.setSelected(false);
+    }//GEN-LAST:event_CheckNoMouseClicked
+
+    private void CheckSiMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_CheckSiMouseClicked
+        // TODO add your handling code here:
+        if(CheckSi.isSelected()){txtCual.setVisible(true); 
+                                jLabelPatologia.setVisible(true);}
+        else{txtCual.setVisible(false);
+             jLabelPatologia.setVisible(false);}
+        CheckNo.setSelected(false);
+
+    }//GEN-LAST:event_CheckSiMouseClicked
 
     /**
      * @param args the command line arguments
@@ -305,10 +357,10 @@ public class nuevoUsuario extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JCheckBox CheckNo;
+    private javax.swing.JCheckBox CheckSi;
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
-    private javax.swing.JCheckBox jCheckBoxNo;
-    private javax.swing.JCheckBox jCheckBoxSi;
     private javax.swing.JComboBox<String> jComboBoxSexo;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
