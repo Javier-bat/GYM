@@ -92,6 +92,11 @@ return retValue;}
         jButtonGestion.setBorderPainted(false);
         jButtonGestion.setContentAreaFilled(false);
         jButtonGestion.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
+        jButtonGestion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonGestionActionPerformed(evt);
+            }
+        });
         getContentPane().add(jButtonGestion, new org.netbeans.lib.awtextra.AbsoluteConstraints(290, 210, -1, -1));
 
         jLabel2.setFont(new java.awt.Font("Calisto MT", 0, 24)); // NOI18N
@@ -131,6 +136,13 @@ return retValue;}
     private void jButtonRutinaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRutinaActionPerformed
         // TODO add your handling code here:
     }//GEN-LAST:event_jButtonRutinaActionPerformed
+
+    private void jButtonGestionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGestionActionPerformed
+        // TODO add your handling code here:
+        TablaUsuarios tu=new TablaUsuarios();
+        tu.setVisible(true);
+        dispose();
+    }//GEN-LAST:event_jButtonGestionActionPerformed
 
     /**
      * @param args the command line arguments
