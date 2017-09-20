@@ -3,10 +3,14 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
+            <file>file:/C:/Users/toshiba%202013/Desktop/gym/src/SQL/Conexion.java</file>
             <file>file:/C:/Users/toshiba%202013/Desktop/gym/src/ventanas/principal.java</file>
             <file>file:/C:/Users/toshiba%202013/Desktop/gym/src/ventanas/interfaz.java</file>
-            <file>file:/C:/Users/toshiba%202013/Desktop/gym/src/ventanas/Usuarios.java</file>
+            <file>file:/C:/Users/toshiba%202013/Desktop/gym/src/ventanas/TablaUsuarios.java</file>
             <file>file:/C:/Users/toshiba%202013/Desktop/gym/src/ventanas/nuevoUsuario.java</file>
+            <file>file:/C:/Users/toshiba%202013/Desktop/gym/src/SQL/consultaTabla_cliente.java</file>
+            <file>file:/C:/Users/toshiba%202013/Desktop/gym/src/SQL/MetodosLogin.java</file>
+            <file>file:/C:/Users/toshiba%202013/Desktop/gym/src/DAO/PersonaDao.java</file>
             <file>file:/C:/Users/toshiba%202013/Desktop/gym/src/ventanas/nuevaCuenta.java</file>
         </group>
     </open-files>
