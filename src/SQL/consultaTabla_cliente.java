@@ -25,20 +25,19 @@ public class consultaTabla_cliente{
             Connection con = DriverManager.getConnection("jdbc:sqlserver://localhost:1433;" +
 			"databaseName=gym;user=sa; password=admin;");
             Statement st = con.createStatement();
-            ResultSet rs=st.executeQuery("select * from cliente");
-            String datos[] = new String[9];
-            System.out.println("UserID  nombre  apellido       edad    objetivo    patologia   peso    talla   sexo");
+            ResultSet rs=st.executeQuery("select usuario,contraseña from usuario");
+            String datos[] = new String[2];
             while(rs.next()){
-                for (int i = 0; i < 9; i++) {
-                datos[0]=rs.getString(i+1);
-                System.out.print(datos[0]+"\t");    
-                }
-                
+                datos[0]=rs.getString(1);
+                datos[1]=rs.getString(2); 
+                System.out.println(datos[0]+datos[1]); 
+
             }
         } catch (ClassNotFoundException ex) {
             Logger.getLogger(consultaTabla_cliente.class.getName()).log(Level.SEVERE, null, ex);
         } catch (SQLException ex) {
             Logger.getLogger(consultaTabla_cliente.class.getName()).log(Level.SEVERE, null, ex);
+            JOptionPane.showMessageDialog(null, "ERROR "+ex);
         }
     }
     

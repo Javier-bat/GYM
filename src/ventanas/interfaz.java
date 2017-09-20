@@ -5,6 +5,7 @@
  */
 package ventanas;
 
+import SQL.MetodosLogin;
 import java.awt.Image;
 import java.awt.Toolkit;
 import javax.swing.JOptionPane;
@@ -126,15 +127,15 @@ return retValue;
         System.exit(0);
     }//GEN-LAST:event_jButtonSalirActionPerformed
 
+    MetodosLogin ml=new MetodosLogin();
+
     private void jButtonIniciarSesionMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jButtonIniciarSesionMouseClicked
         // TODO add your handling code here:
-        String usuario="javier";
-        String contraseña="escudero";
-        String pass=new String(jPasswordField1.getPassword());
+
         
         
-        if(jTextFieldUser.getText().equals(usuario)&&pass.equals(contraseña)){
-            JOptionPane.showMessageDialog(null, "Bienvenido: "+usuario);
+        if(ml.validar_ingreso()==1){
+            JOptionPane.showMessageDialog(null, "Bienvenido: "+jTextFieldUser.getText());
         principal in=new principal();
         in.setVisible(true);
         dispose();
@@ -161,6 +162,7 @@ return retValue;
 
     private void jButtonIniciarSesionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonIniciarSesionActionPerformed
         // TODO add your handling code here:
+       
     }//GEN-LAST:event_jButtonIniciarSesionActionPerformed
 
     /**
@@ -205,8 +207,8 @@ return retValue;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabelFondo;
-    private javax.swing.JPasswordField jPasswordField1;
-    private javax.swing.JTextField jTextFieldUser;
+    public static javax.swing.JPasswordField jPasswordField1;
+    public static javax.swing.JTextField jTextFieldUser;
     private javax.swing.JButton nuevoUsuario;
     // End of variables declaration//GEN-END:variables
 }

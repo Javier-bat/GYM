@@ -9,6 +9,9 @@ import java.awt.event.KeyAdapter;
 import java.awt.event.KeyEvent;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
+import SQL.Conexion;
+import java.sql.Connection;
+import java.sql.PreparedStatement;
 
 /**
  *
@@ -19,20 +22,46 @@ public class nuevoUsuario extends javax.swing.JFrame {
     /**
      * Creates new form nuevoUsuario
      */
+    Conexion conecion = new Conexion();
+    Connection cin= conecion.Entrar();
+    PreparedStatement ps;
+    String insertar="INSERT INTO cliente(Nombre,Apellido,Edad,Objetivo,Patologia,Peso,Talla,Sexo) VALUES(?,?,?,?,?,?,?,?)";
+    void Registrar(){
+        try {
+            ps = cin.prepareCall(insertar);
+                           String[] valores={jTextFieldNombre.getText(),jTextFieldApellido.getText(),jTextFieldEdad.getText(),
+                           jTextFieldObjetivos.getText(),txtCual.getText(),jTextFieldPeso.getText(),jTextFieldTalla.getText()};
+            for (int i = 0; i <7; i++) {
+             ps.setString(i+1, valores[i]);
+            }
+            ps.setObject(8, jComboBoxSexo.getSelectedItem());
+            int registro=ps.executeUpdate();
+            if (registro>0){JOptionPane.showMessageDialog(null, "Registrado con exito");
+            
+            }
+            
+        } catch (Exception e) {
+            JOptionPane.showMessageDialog(null, "Error en "+e);
+        }
+    
+    
+    }
+    
     public nuevoUsuario() {
+         
         initComponents();
         this.setLocationRelativeTo(null);
-                    jTextFieldEdad = new JTextField(10);
-    jTextFieldEdad.addKeyListener(new
-            KeyAdapter() {
-                public void keyTyped(KeyEvent e)
-                {char caracter=e.getKeyChar();
-                if(((caracter<'0')||
-                        (caracter>'9'))&&
-                                (caracter !='\b'))
-                {
-                    e.consume();
-                }}});
+//                    jTextFieldEdad = new JTextField(10);
+//    jTextFieldEdad.addKeyListener(new
+//            KeyAdapter() {
+//                public void keyTyped(KeyEvent e)
+//                {char caracter=e.getKeyChar();
+//                if(((caracter<'0')||
+//                        (caracter>'9'))&&
+//                                (caracter !='\b'))
+//                {
+//                    e.consume();
+//                }}});
     txtCual.setVisible(false);
     jLabelPatologia.setVisible(false);
       
@@ -195,26 +224,24 @@ public class nuevoUsuario extends javax.swing.JFrame {
 
         jLabel6.setFont(new java.awt.Font("Calisto MT", 0, 24)); // NOI18N
         jLabel6.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel6.setText("Peso :");
+        jLabel6.setText("Peso (kg):");
         getContentPane().add(jLabel6, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 30, -1, -1));
 
         jLabel7.setFont(new java.awt.Font("Calisto MT", 0, 24)); // NOI18N
         jLabel7.setForeground(new java.awt.Color(255, 255, 255));
-        jLabel7.setText("Talla :");
+        jLabel7.setText("Talla (cm):");
         getContentPane().add(jLabel7, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 100, -1, -1));
 
         jTextFieldPeso.setBackground(new java.awt.Color(102, 102, 102));
         jTextFieldPeso.setFont(new java.awt.Font("Calisto MT", 0, 12)); // NOI18N
         jTextFieldPeso.setForeground(new java.awt.Color(204, 204, 204));
         jTextFieldPeso.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
-        jTextFieldPeso.setText("Kg"); // NOI18N
         getContentPane().add(jTextFieldPeso, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 60, 110, 30));
 
         jTextFieldTalla.setBackground(new java.awt.Color(102, 102, 102));
         jTextFieldTalla.setFont(new java.awt.Font("Calisto MT", 0, 12)); // NOI18N
         jTextFieldTalla.setForeground(new java.awt.Color(204, 204, 204));
         jTextFieldTalla.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
-        jTextFieldTalla.setText("Cm");
         getContentPane().add(jTextFieldTalla, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 130, 110, 30));
 
         jLabel8.setFont(new java.awt.Font("Calisto MT", 0, 24)); // NOI18N
@@ -270,7 +297,14 @@ public class nuevoUsuario extends javax.swing.JFrame {
 
     private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
         // TODO add your handling code here:
-
+        Registrar();
+        txtCual.setText("");
+        jTextFieldEdad.setText("");
+        jTextFieldApellido.setText("");
+        jTextFieldObjetivos.setText("");
+        jTextFieldPeso.setText("");
+        jTextFieldNombre.setText("");
+        jTextFieldTalla.setText("");
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jTextFieldEdadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldEdadActionPerformed

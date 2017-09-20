@@ -28,6 +28,7 @@ Connection cin = conecion.Entrar();//llamamos al metodo connect
 
 void Registrar(){//creo metodo vacio
 String insertar="insert into usuario (Usuario,Contraseña)values(?,?)";
+
     try {
         ps = cin.prepareCall(insertar);
         ps.setString(1, txtUsuario.getText());
