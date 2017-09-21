@@ -173,14 +173,18 @@ return retValue;
 
     private void botonAceptarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonAceptarActionPerformed
         // TODO add your handling code here:
+     String ClaveSegura = "aquiles2017leo";
+     String ClaveSeguraUsuario = JOptionPane.showInputDialog("Por razones de seguridad, para crear un usuario \n Ingrese clave segura");
+     
+     if(ClaveSegura.equals(ClaveSeguraUsuario)){
      if(txtRepetirContra.getText().equals(txtContra.getText())==false){
      JOptionPane.showMessageDialog(null, "No coinciden las contraseñas"); 
         
      }else{Registrar();
             dispose();}
-        
+     }else{JOptionPane.showMessageDialog(null, "Buen intento ;)");}  
     }//GEN-LAST:event_botonAceptarActionPerformed
-
+    
     private void botonCancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonCancelarActionPerformed
         // TODO add your handling code here:
         int salir;
