@@ -80,9 +80,12 @@ Persona per;
         jMenuActualizar = new javax.swing.JMenuItem();
         jMenuMarcarInactivo = new javax.swing.JMenuItem();
         jMenuReintegrar = new javax.swing.JMenuItem();
+        jMenuItem3 = new javax.swing.JMenuItem();
         jMenuVerInactivos = new javax.swing.JMenuItem();
         jMenu4 = new javax.swing.JMenu();
-        jMenuItem1 = new javax.swing.JMenuItem();
+        jMenu2 = new javax.swing.JMenu();
+        jMenuItem4 = new javax.swing.JMenuItem();
+        jMenuItem5 = new javax.swing.JMenuItem();
         jMenuItem2 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -142,24 +145,59 @@ Persona per;
         jMenu1.add(jMenuMarcarInactivo);
 
         jMenuReintegrar.setText("Reintegrar");
+        jMenuReintegrar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuReintegrarActionPerformed(evt);
+            }
+        });
         jMenu1.add(jMenuReintegrar);
 
+        jMenuItem3.setText("Ver activos");
+        jMenuItem3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem3ActionPerformed(evt);
+            }
+        });
+        jMenu1.add(jMenuItem3);
+
         jMenuVerInactivos.setText("Ver inactivos ");
+        jMenuVerInactivos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuVerInactivosActionPerformed(evt);
+            }
+        });
         jMenu1.add(jMenuVerInactivos);
 
         jMenuBar1.add(jMenu1);
 
         jMenu4.setText("Mas");
 
-        jMenuItem1.setText("Salir");
-        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+        jMenu2.setText("Salir...");
+
+        jMenuItem4.setText("Cerrar Sesion");
+        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItem1ActionPerformed(evt);
+                jMenuItem4ActionPerformed(evt);
             }
         });
-        jMenu4.add(jMenuItem1);
+        jMenu2.add(jMenuItem4);
+
+        jMenuItem5.setText("Cerrar Aplicacion");
+        jMenuItem5.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem5ActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jMenuItem5);
+
+        jMenu4.add(jMenu2);
 
         jMenuItem2.setText("Regresar");
+        jMenuItem2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem2ActionPerformed(evt);
+            }
+        });
         jMenu4.add(jMenuItem2);
 
         jMenuBar1.add(jMenu4);
@@ -253,10 +291,6 @@ Persona per;
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
-        // TODO add your handling code here:
-    }//GEN-LAST:event_jMenuItem1ActionPerformed
-
     private void jMenuActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuActualizarActionPerformed
         // TODO add your handling code here:
         
@@ -299,6 +333,47 @@ Persona per;
         txtPeso.setText(""+per.getPeso());
         txtSexo.setText(per.getSexo());
     }//GEN-LAST:event_jTable1MouseClicked
+
+    private void jMenuVerInactivosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuVerInactivosActionPerformed
+        // TODO add your handling code here:
+        ListarTablaInactivos();
+    }//GEN-LAST:event_jMenuVerInactivosActionPerformed
+
+    private void jMenuItem3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem3ActionPerformed
+        // TODO add your handling code here:
+        ListarTabla();
+    }//GEN-LAST:event_jMenuItem3ActionPerformed
+
+    private void jMenuReintegrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuReintegrarActionPerformed
+        // TODO add your handling code here:
+        boolean resp = personas.Reintegro(per);
+        if(resp==false){
+            JOptionPane.showMessageDialog(null, "Pasado a Activos...");
+            ListarTablaInactivos();
+            Limpiar();
+        }else{
+            JOptionPane.showMessageDialog(null, "Error... ");
+        }
+    }//GEN-LAST:event_jMenuReintegrarActionPerformed
+
+    private void jMenuItem5ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem5ActionPerformed
+        // TODO add your handling code here:
+        System.exit(0);
+    }//GEN-LAST:event_jMenuItem5ActionPerformed
+
+    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
+        // TODO add your handling code here:
+        interfaz in = new interfaz();
+        in.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jMenuItem4ActionPerformed
+
+    private void jMenuItem2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem2ActionPerformed
+        // TODO add your handling code here:
+        principal pr = new principal();
+        pr.setVisible(true);
+        this.dispose();
+    }//GEN-LAST:event_jMenuItem2ActionPerformed
 
     /**
      * @param args the command line arguments
@@ -346,11 +421,14 @@ Persona per;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
     private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
     private javax.swing.JMenu jMenu4;
     private javax.swing.JMenuItem jMenuActualizar;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItem3;
+    private javax.swing.JMenuItem jMenuItem4;
+    private javax.swing.JMenuItem jMenuItem5;
     private javax.swing.JMenuItem jMenuMarcarInactivo;
     private javax.swing.JMenuItem jMenuReintegrar;
     private javax.swing.JMenuItem jMenuVerInactivos;
