@@ -12,6 +12,9 @@ import javax.swing.JTextField;
 import SQL.Conexion;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.util.Calendar;
+import java.util.GregorianCalendar;
+import java.util.TimeZone;
 
 /**
  *
@@ -21,11 +24,30 @@ public class nuevoUsuario extends javax.swing.JFrame {
 
     /**
      * Creates new form nuevoUsuario
+     * 
+     * 
+     * 
      */
+    
+    
+        Calendar c1 = Calendar.getInstance(TimeZone.getDefault());
+    Calendar c2 = new GregorianCalendar();
+
+    String dia=Integer.toString(c1.get(Calendar.DATE));
+    String mes= Integer.toString(c2.get(Calendar.MONTH)+1);
+    String annio = Integer.toString(c1.get(Calendar.YEAR));
+    String fecha=dia+"/"+mes+"/"+annio;
+ 
+    
+    
+    
+    
+    
+    
     Conexion conecion = new Conexion();
     Connection cin= conecion.Entrar();
     PreparedStatement ps;
-    String insertar="INSERT INTO cliente(Nombre,Apellido,Edad,Objetivo,Patologia,Peso,Talla,Sexo) VALUES(?,?,?,?,?,?,?,?)";
+    String insertar="INSERT INTO cliente(Nombre,Apellido,Edad,Objetivo,Patologia,Peso,Talla,Sexo,FechaInscripcion,Vencimiento,correo) VALUES(?,?,?,?,?,?,?,?,?,?,?)";
     void Registrar(){
         try {
             ps = cin.prepareCall(insertar);
@@ -35,6 +57,9 @@ public class nuevoUsuario extends javax.swing.JFrame {
              ps.setString(i+1, valores[i]);
             }
             ps.setObject(8, jComboBoxSexo.getSelectedItem());
+            ps.setObject(9, fecha);
+            ps.setObject(10,jDateChooser1.getDate());
+            ps.setObject(11, txtCorreo.getText());
             int registro=ps.executeUpdate();
             if (registro>0){JOptionPane.showMessageDialog(null, "Registrado con exito");
             
@@ -98,6 +123,10 @@ public class nuevoUsuario extends javax.swing.JFrame {
         jComboBoxSexo = new javax.swing.JComboBox<>();
         txtCual = new javax.swing.JTextField();
         jLabelPatologia = new javax.swing.JLabel();
+        jDateChooser1 = new com.toedter.calendar.JDateChooser();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        txtCorreo = new javax.swing.JTextField();
         jLabelFondoNuevoUsr = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -256,7 +285,7 @@ public class nuevoUsuario extends javax.swing.JFrame {
         getContentPane().add(jComboBoxSexo, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 200, 100, 20));
 
         txtCual.setBackground(new java.awt.Color(102, 102, 102));
-        txtCual.setFont(new java.awt.Font("Calisto MT", 0, 24)); // NOI18N
+        txtCual.setFont(new java.awt.Font("Calisto MT", 0, 12)); // NOI18N
         txtCual.setForeground(new java.awt.Color(204, 204, 204));
         txtCual.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -269,6 +298,27 @@ public class nuevoUsuario extends javax.swing.JFrame {
         jLabelPatologia.setForeground(new java.awt.Color(255, 255, 255));
         jLabelPatologia.setText("¿Cual?");
         getContentPane().add(jLabelPatologia, new org.netbeans.lib.awtextra.AbsoluteConstraints(80, 400, -1, -1));
+
+        jDateChooser1.setBackground(new java.awt.Color(0, 0, 0));
+        jDateChooser1.setBorder(javax.swing.BorderFactory.createBevelBorder(javax.swing.border.BevelBorder.RAISED));
+        jDateChooser1.setDateFormatString("dd-MM-yyyy");
+        getContentPane().add(jDateChooser1, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 270, -1, -1));
+
+        jLabel9.setFont(new java.awt.Font("Calisto MT", 0, 24)); // NOI18N
+        jLabel9.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel9.setText("Vencimiento :");
+        getContentPane().add(jLabel9, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 240, -1, -1));
+
+        jLabel10.setFont(new java.awt.Font("Calisto MT", 0, 24)); // NOI18N
+        jLabel10.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel10.setText("Correo:");
+        getContentPane().add(jLabel10, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 310, -1, -1));
+
+        txtCorreo.setBackground(new java.awt.Color(102, 102, 102));
+        txtCorreo.setFont(new java.awt.Font("Calisto MT", 0, 12)); // NOI18N
+        txtCorreo.setForeground(new java.awt.Color(204, 204, 204));
+        txtCorreo.setHorizontalAlignment(javax.swing.JTextField.RIGHT);
+        getContentPane().add(txtCorreo, new org.netbeans.lib.awtextra.AbsoluteConstraints(370, 340, 120, 30));
 
         jLabelFondoNuevoUsr.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/orig_369892.jpg"))); // NOI18N
         getContentPane().add(jLabelFondoNuevoUsr, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1320, 440));
@@ -305,6 +355,7 @@ public class nuevoUsuario extends javax.swing.JFrame {
         jTextFieldPeso.setText("");
         jTextFieldNombre.setText("");
         jTextFieldTalla.setText("");
+        txtCorreo.setText("");
     }//GEN-LAST:event_jButton1ActionPerformed
 
     private void jTextFieldEdadActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jTextFieldEdadActionPerformed
@@ -396,7 +447,9 @@ public class nuevoUsuario extends javax.swing.JFrame {
     private javax.swing.JButton jButton1;
     private javax.swing.JButton jButton2;
     private javax.swing.JComboBox<String> jComboBoxSexo;
+    private com.toedter.calendar.JDateChooser jDateChooser1;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
@@ -404,6 +457,7 @@ public class nuevoUsuario extends javax.swing.JFrame {
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JLabel jLabelFondoNuevoUsr;
     private javax.swing.JLabel jLabelPatologia;
     private javax.swing.JTextField jTextFieldApellido;
@@ -412,6 +466,7 @@ public class nuevoUsuario extends javax.swing.JFrame {
     private javax.swing.JTextField jTextFieldObjetivos;
     private javax.swing.JTextField jTextFieldPeso;
     private javax.swing.JTextField jTextFieldTalla;
+    private javax.swing.JTextField txtCorreo;
     private javax.swing.JTextField txtCual;
     // End of variables declaration//GEN-END:variables
 }

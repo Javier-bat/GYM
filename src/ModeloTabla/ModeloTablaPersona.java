@@ -16,7 +16,7 @@ import javax.swing.table.AbstractTableModel;
  */
 public class ModeloTablaPersona extends AbstractTableModel {
 
-    String[] columnas = {"UserID", "Nombre", "Apellido", "Edad", "Objetivo", "Patologia", "Peso", "Altura", "sexo"};
+    String[] columnas = {"UserID", "Nombre", "Apellido", "Edad", "Objetivo", "Patologia", "Peso", "Altura", "sexo","correo"};
     public List<Persona> personas = new ArrayList<>();
 
     public ModeloTablaPersona(List<Persona> personas) {

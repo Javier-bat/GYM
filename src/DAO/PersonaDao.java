@@ -149,6 +149,32 @@ public class PersonaDao {
                   JOptionPane.showMessageDialog(null, "ERROR "+e);
               }
               return lista;
+          }     
+                      public List<Persona> correo(){
+              Connection con = null;
+              CallableStatement cstm=null;
+              ResultSet rs =null;
+              List<Persona> lista = null;
+              try {
+                  lista=new ArrayList<>();
+                  con=conexion.Entrar();
+                  cstm=con.prepareCall("{Call correo}");
+                  rs = cstm.executeQuery();
+                  Persona per = null;
+                  while (rs.next()){
+                     per = new Persona();
+                     per.setUserid(rs.getInt("UserID"));
+                     per.setNombre(rs.getString("Nombre"));  
+                     per.setApellido(rs.getString("Apellido"));
+                     per.setCorreo(rs.getString("Correo"));
+                     lista.add(per);
+                  
+                  
+                  }
+              } catch (Exception e) {
+                  JOptionPane.showMessageDialog(null, "ERROR "+e);
+              }
+              return lista;
           }         
           
             

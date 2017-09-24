@@ -39,6 +39,7 @@ String insertar="insert into usuario (Usuario,Contraseña)values(?,?)";
         }
         else{JOptionPane.showMessageDialog(null, "Hubo un error, intenta de nuevo");}
     } catch (Exception e) {
+        JOptionPane.showMessageDialog(null, "ERROR EN : "+e);
     }
 }
 

@@ -50,6 +50,7 @@ return retValue;}
         jButtonRutina.setIcon(new javax.swing.ImageIcon(getClass().getResource("/imagenes/Icono_Registro.png"))); // NOI18N
         jButtonRutina.setBorderPainted(false);
         jButtonRutina.setContentAreaFilled(false);
+        jButtonRutina.setCursor(new java.awt.Cursor(java.awt.Cursor.HAND_CURSOR));
         jButtonRutina.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonRutinaActionPerformed(evt);
@@ -135,6 +136,8 @@ return retValue;}
 
     private void jButtonRutinaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRutinaActionPerformed
         // TODO add your handling code here:
+        Mail ml = new Mail();
+        ml.setVisible(true);
     }//GEN-LAST:event_jButtonRutinaActionPerformed
 
     private void jButtonGestionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGestionActionPerformed
