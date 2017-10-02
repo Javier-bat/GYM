@@ -5,11 +5,15 @@
  */
 package Entidades;
 
+import java.util.Date;
+
 /**
  *
  * @author toshiba 2013
  */
 public class Persona {
+
+
     
     public int userid;    
     public String nombre;    
@@ -21,6 +25,7 @@ public class Persona {
     public int altura;    
     public String sexo;
     public String correo;
+    public Date date;
 
   
 
@@ -28,7 +33,7 @@ public class Persona {
     public Persona() {
     }
 
-    public Persona(int userid, String nombre, String apellido, int edad, String objetivo, String patologia, int peso, int altura, String sexo, String correo) {
+    public Persona(int userid, String nombre, String apellido, int edad, String objetivo, String patologia, int peso, int altura, String sexo, String correo, Date date) {
         this.userid = userid;
         this.nombre = nombre;
         this.apellido = apellido;
@@ -39,12 +44,19 @@ public class Persona {
         this.altura = altura;
         this.sexo = sexo;
         this.correo = correo;
+        this.date = date;
     }
     
     
     
     
-    
+        public Date getDate() {
+        return date;
+    }
+
+    public void setDate(Date date) {
+        this.date = date;
+    }
     
       public String getCorreo() {
         return correo;

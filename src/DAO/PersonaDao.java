@@ -9,8 +9,10 @@ import Entidades.Persona;
 import SQL.Conexion;
 import java.sql.CallableStatement;
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
@@ -29,7 +31,7 @@ public class PersonaDao {
         boolean resp=true;
         try {
             con = conexion.Entrar();
-            cstm=con.prepareCall("{call UpdatePersona(?,?,?,?,?,?,?,?,?)}");
+            cstm=con.prepareCall("{call UpdatePersona(?,?,?,?,?,?,?,?,?,?,?)}");
             cstm.setString(1, per.getNombre());
             cstm.setString(2, per.getApellido());
             cstm.setInt(3, per.getEdad());
@@ -38,7 +40,9 @@ public class PersonaDao {
             cstm.setInt(6, per.getPeso());
             cstm.setInt(7, per.getAltura());
             cstm.setString(8, per.getSexo());
-            cstm.setInt(9, per.getUserid());
+            cstm.setString(9,per.getCorreo());
+            cstm.setObject(10,per.getDate());
+            cstm.setInt(11, per.getUserid());
             resp=cstm.execute();
             
         } catch (SQLException e) {
@@ -109,6 +113,9 @@ public class PersonaDao {
                      per.setPeso(rs.getInt("Peso"));
                      per.setAltura(rs.getInt("Talla"));
                      per.setSexo(rs.getString("Sexo"));
+                     per.setCorreo(rs.getString("Correo"));
+                     per.setDate(rs.getDate("Vencimiento"));
+                 
                      lista.add(per);
                   
                   
@@ -141,6 +148,8 @@ public class PersonaDao {
                      per.setPeso(rs.getInt("Peso"));
                      per.setAltura(rs.getInt("Talla"));
                      per.setSexo(rs.getString("Sexo"));
+                     per.setCorreo(rs.getString("Correo"));
+                     per.setDate(rs.getDate("Vencimiento"));
                      lista.add(per);
                   
                   

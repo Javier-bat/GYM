@@ -16,7 +16,7 @@ import javax.swing.table.AbstractTableModel;
  */
 public class ModeloTablaPersona extends AbstractTableModel {
 
-    String[] columnas = {"UserID", "Nombre", "Apellido", "Edad", "Objetivo", "Patologia", "Peso", "Altura", "sexo","correo"};
+    String[] columnas = {"UserID", "Nombre", "Apellido", "Edad", "Objetivo", "Patologia", "Peso", "Altura", "sexo", "correo","Venc. de Cuota"};
     public List<Persona> personas = new ArrayList<>();
 
     public ModeloTablaPersona(List<Persona> personas) {
@@ -75,6 +75,14 @@ public class ModeloTablaPersona extends AbstractTableModel {
                                         if (columnIndex == 8) {
                                             resp = personas.get(rowIndex).getSexo();
 
+                                        } else {
+                                            if (columnIndex == 9) {
+                                                resp = personas.get(rowIndex).getCorreo();
+                                            }else{
+                                                if (columnIndex == 10){
+                                                resp = personas.get(rowIndex).getDate();
+                                                }
+                                            }
                                         }
                                     }
                                 }
@@ -83,7 +91,7 @@ public class ModeloTablaPersona extends AbstractTableModel {
 
                         }
                     }
-    
+
                 }
             }
         }
@@ -91,8 +99,8 @@ public class ModeloTablaPersona extends AbstractTableModel {
     }
 
     public Persona DamePersona(int fila) {
-        
-    return personas.get(fila);
+
+        return personas.get(fila);
     }
 
 }
